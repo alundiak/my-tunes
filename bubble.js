@@ -28,8 +28,6 @@ var funcFlareJson = function(data) {
 };
 
 var funcTracksCsv = function(data) {
-    // console.log(data;
-
     var newData = {}, separator = ":";
     
     // newData.id = data['Artist']; // if Artist is not applied, JS fails
@@ -70,7 +68,7 @@ var funcTracksCsv = function(data) {
 };
 
 var funcTracksJson = function(data) {
-    console.log(data);
+    // console.log(data);
     var newData = {
         name: "Tracks",
         children: []
@@ -177,8 +175,10 @@ d3.csv("data/tracks.csv", funcTracksCsv, function(error, classes) {
     node.append("text")
         .attr("clip-path", function(d) {
             // console.log(d);
-            return "url(#clip-" + d.id + ")"; // AL: d.id is not ok to be at any level of HTML/CSS (in fact lot of different strings there)
-            // return "url(#clip-" + d.id + ")"; // AL: d.id is not ok to be at any level of HTML/CSS (in fact lot of different strings there)
+            return "url(#clip-" + d.id + ")"; 
+            // AL: d.id is not ok to be at any level of HTML/CSS (in fact lot of different strings there)
+            // return "url(#clip-" + d.id + ")"; 
+            // // AL: d.id is not ok to be at any level of HTML/CSS (in fact lot of different strings there)
 
             // AL: Create onHover - show artwork or open new route 
         })

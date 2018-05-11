@@ -5,9 +5,9 @@ FILE=~/Music/iTunes/iTunes\ Music\ Library.xml # Sierra (at least for me)
 # FILE="./Library.xml"
 
 # https://github.com/shawnbot/itunes-data/issues/13
-itunes-data --tracks data/tracks.csv "$FILE"
-itunes-data --tracks data/tracks.tsv "$FILE"
-itunes-data --tracks data/tracks.json "$FILE"
+./node_modules/.bin/itunes-data --tracks data/tracks.csv "$FILE"
+./node_modules/.bin/itunes-data --tracks data/tracks.tsv "$FILE"
+./node_modules/.bin/itunes-data --tracks data/tracks.json "$FILE"
 
 # itunes-data --artists data/artists.csv "$FILE"
 # itunes-data --artists data/artists.tsv "$FILE"

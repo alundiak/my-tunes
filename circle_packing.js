@@ -82,9 +82,8 @@ var parseData = function(data) {
 }
 
 // d3.json("data/flare.json", function(error, root) {
-
 d3.json("data/tracks.json", function(error, root) {
-    root = parseData(root);
+    // root = parseData(root);
 
     if (error) throw error;
 
