@@ -1,4 +1,8 @@
-import {iTunesDataToCamelCase, convertItunesDataToDeepChildrenData} from './js/converters.js';
+//
+// heavily based on old example for simple circle packing 
+// https://strongriley.github.io/d3/ex/pack.html
+//
+import {iTunesDataToCamelCase, convertItunesDataToFlareData, flattenedHierarchy} from './js/converters.js';
 
 var svg = d3.select("svg"),
     diameter = +svg.attr("width"),
@@ -10,6 +14,7 @@ var pack = d3.pack()
 
 var funcFlareCsv = function(data) {
     // console.log(data);
+    data.name = data.id;
     data.value = +data.value;
     if (data.value) return data;
 };
@@ -28,16 +33,19 @@ d3.json("data/tracks.json", function(error, iTunesData) {
     var tracksData = iTunesData.map(function(d, i) {
         return iTunesDataToCamelCase(d);
     });
-    // tracksData = convertItunesDataToDeepChildrenData(tracksData);
-    
+    tracksData = convertItunesDataToFlareData(tracksData);
     console.log(tracksData);
+
+    // tracksData = flattenedHierarchy(tracksData); // no need for circle_packing.js
+    // console.log(tracksData);
 
     if (error) throw error;
 
     var root = d3.hierarchy(tracksData)
         .sum(function(d) {
             // console.log(d);
-            return d.size;
+            // return d.size;
+            return d.value;
         })
         .sort(function(a, b) {
             return b.value - a.value;
@@ -73,6 +81,8 @@ d3.json("data/tracks.json", function(error, iTunesData) {
         }).append("text")
         .attr("dy", "0.3em")
         .text(function(d) {
-            return d.data.name.substring(0, d.r / 3);
+            var val = d.data.name.substring(0, d.r / 3);
+            // console.log(val);
+            return val;
         });
 });

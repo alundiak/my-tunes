@@ -19,8 +19,11 @@ export function iTunesDataToCamelCase(data) {
     // console.log(newData.id);
 
     newData.size = +data['Size'];
-    newData.value = +data['Size'];
-    // newData.value = +data['Play Count'];
+    // newData.value = +data['Size'];
+    newData.value = +data['Play Count'];
+    // newData.value = +data['Year'];
+    // newData.value = +data['Bit Rate'];
+    
     newData.trackId = data['Track ID'];
     newData.name = data['Name'];
     newData.artist = data['Artist'];
@@ -44,101 +47,126 @@ export function iTunesDataToCamelCase(data) {
     return newData; // => iTunesDataSimplified
 };
 
-export function convertItunesDataToFlattendChildrenData(iTunesDataSimplified) {
-    console.log(iTunesDataSimplified);
+// TODO
+// Rework this using BinaryTreeNode as on LeetCode
+// TODO
+/**
+ * [convertItunesDataToFlareData description]
+ * @param  {[Array]} data raw iTunesData
+ * @return {[Array]} converted, flare/hierarchy data: 
+ * "MyTracks \ "Artist" \ "Album" \ { "Name" (aka name), "Play Count" (aka value) }
+ */
+export function convertItunesDataToFlareData(data) {
     var newData = {
-        name: "Tracks",
+        name: "Albums By Artists",
         children: []
     };
-    
-    // d.id = d['Name'];
-    // d.value = +d['Size'];
 
-    iTunesDataSimplified.forEach(function(d, i) {
-        // console.log(d, i);
-
-        newData.children.push({
-            name: data["Album"],
-            children: [{
-                name: data["Name"],
-                size: data["Size"]
-            }]
+    data.forEach(function(d, i) { 
+        let foundArtist = newData.children.find((artistObj) => {
+            return artistObj.name === d.artist;
         });
+
+        if (foundArtist){
+        	let foundAlbum = foundArtist.children.find((albumObj) => {
+        		return albumObj.name === d.album;	
+        	});
+        	if (foundAlbum){
+        		foundAlbum.children.push({
+	                name: d.name || 'track name not found',
+	                // size: d.size,
+	                // size: d.playCount || 0,
+	                value: d.playCount || 0 // last in chain, so we need value/playCount
+	            });
+        	} else {
+        		foundArtist.children.push({
+	                name: d.album || 'album name not found',
+	                // size: d.size,
+	                // size: d.playCount || 0,
+	                // value: d.playCount || 0, // maybe just 0
+	                children: [
+                    	{
+                    		name: d.name || 'track name not found',
+                    		value: d.playCount || 0 // maybe just 0
+                    	}
+                    ]
+	            });
+        	}
+        } else { // unique artist entry
+        	newData.children.push({
+	            name: d.artist || 'artist name not found',
+	            children:[
+	                {
+	                    name: d.album || 'album name not found',
+	                    children: [
+	                    	{
+	                    		name: d.name || 'track name not found',
+	                    		value: d.playCount || 0 // maybe just 0
+	                    	}
+	                    ]
+	                    // size: d.size,
+	                    // size: d.playCount || 0, // to follow flattenedHierarchy() function code. But not sure if needed.
+	                    // value: d.playCount || 0 // maybe just 0
+	                }
+	            ]
+	        });
+        }
     });
 
     return newData || data;
 };
 
-export function convertItunesDataToDeepChildrenData(data){ // TODO
-	// console.log(data);
-    // var newData = {
-    //     name: "Albums By Artists",
-    //     children: []
-    // };
-
-    // data.forEach(function(d, i) { 
-    //     // console.log(d, i); 
-
-    //     newData.children.push({
-    //         name: data["Album"],
-    //         children:[
-    //             {
-    //                 name: data["Name"],
-    //                 size: data["Size"]
-    //             }
-    //         ]
-    //     });
-    // });
-
-    // MyTracks \ "Album Artist" \ "Album" \ "Name" (of track), "Size" (of track)
+// Only root level - Tracks !!!
+export function convertItunesDataToFlattendChildrenData(iTunesDataSimplified) {
     var newData = {
-        name: "MyTracks",
-        children: [
-            {
-                name: "Eric Prydz",
-                children: [
-                    {
-                        name: "Album 1", 
-                        children: [
-                            {name: "Song 2", size: 1080}
-                        ]
-                    },
-                    {
-                        name: "Album 2", 
-                        children: [
-                            {
-                                name: "Song 1", 
-                                size: 1075
-                            },
-                            {name: "Song 3", size: 1085},
-                            {name: "Song 4", size: 1090}
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "Above and Beyond",
-                children: [
-                    {
-                        name: "Album A", 
-                        children: [
-                            {name: "Song A.1", "size": 1082},
-                            {name: "Song A.1", "size": 1082},
-                            {name: "Song A.1", "size": 2082},
-                            {name: "Song A.1", "size": 4082}
-                        ]
-                    },
-                    {
-                        name: "Album B", 
-                        children: [
-                            // {name: "Song B.1", "size": 1082},
-                            {name: "Song B.2", "size": 1082}
-                        ]
-                    }
-                ]
-            }
-        ]            
+        name: "Albums By Artists",
+        children: []
     };
 
-    return newData || data;
+    iTunesDataSimplified.forEach(function(d, i) { 
+        newData.children.push({
+            name: d.album,
+            children:[
+                {
+                    name: d.name || 'name not found - correct track info',
+                    // size: d.size,
+                    size: d.playCount || 0,
+                    value: d.playCount || 0
+                }
+            ]
+        });
+    });
+
+    return newData || iTunesDataSimplified;
+};
+
+//
+// FOR BUBBLE ONLY !!! - if new logic needed, create separate function
+// 
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+// Looks like TreeNode / ListNode (similar to as in leetcode - https://leetcode.com/problems/add-two-numbers/description/)
+// Code taken from https://bl.ocks.org/john-guerra/0d81ccfd24578d5d563c55e785b3b40a and reworked
+export function flattenedHierarchy(hierarchyData) {
+    console.log('Initial data structure', hierarchyData);
+    var childrenData = [];
+
+    function recurse(name, node) {
+        if (node.children) node.children.forEach(function(child) {
+            recurse(node.name, child);
+        });
+        else childrenData.push({
+            packageName: name,
+            className: node.name,
+            value: node.size
+        });
+    }
+
+    recurse(null, hierarchyData);
+
+    let convertedData = {
+        children: childrenData
+    };
+    console.log('Converted data structure', convertedData);
+
+    return convertedData;
 }

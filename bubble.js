@@ -1,23 +1,11 @@
 import bubbleForCsv from './js/bubble_for_csv.js';
 import bubbleForJson from './js/bubble_for_json.js';
-import {iTunesDataToCamelCase} from './js/converters.js';
+import {iTunesDataToCamelCase, convertItunesDataToFlareData, convertItunesDataToFlattendChildrenData, flattenedHierarchy} from './js/converters.js';
 
 var funcFlareCsv = function(data) {
     // console.log(data);
     data.value = +data.value;
     if (data.value) return data;
-};
-
-var funcFlareJson = function(data) {
-    console.log(data);
-    // d.value = +d.value;
-    var newData = {};
-
-    data.children.forEach(function(d, i) {
-        // console.log(d, i);
-    });
-
-    return data;
 };
 
 // works
@@ -27,7 +15,7 @@ var funcFlareJson = function(data) {
 
 // works (but different look)
 // d3.json("data/flare.json", function(error, tracksData) {
-//     bubbleForJson(error, tracksData);
+//     bubbleForJson(error, flattenedHierarchy(tracksData));
 // });
 
 // works - huge bubble with small circles.
@@ -45,13 +33,13 @@ d3.json("data/tracks.json", function(error, tracksData) {
     let camelCaseCustomData = tracksData.map(function(d, i) {
         return iTunesDataToCamelCase(d);
     });
-    // 2 - convert camelCaseCustomData to regular hierarchyData (as flare.json)
-    // maybe skip
-    
-    // 3 - convert hierarchyData to flattendHierarchyData
-    // 
-    
-    var flattendHierarchyData = [];
-    // 4 - pass it to bubbleForJson() to render    
+
+    // 2 - convert camelCaseCustomData to regularHierarchyData (as flare.json)
+    var regularHierarchyData = convertItunesDataToFlattendChildrenData(camelCaseCustomData); // it's already flatten structure
+     
+    // 3 - convert regularHierarchyData to flattendHierarchyData
+    var flattendHierarchyData = flattenedHierarchy(regularHierarchyData); // build packageName, className, value structure.
+
+    // 4 - pass it to bubbleForJson() to render
     bubbleForJson(error, flattendHierarchyData);
 });
