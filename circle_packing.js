@@ -1,3 +1,5 @@
+import {iTunesDataToCamelCase, convertItunesDataToDeepChildrenData} from './js/converters.js';
+
 var svg = d3.select("svg"),
     diameter = +svg.attr("width"),
     g = svg.append("g").attr("transform", "translate(2,2)"),
@@ -6,88 +8,33 @@ var svg = d3.select("svg"),
 var pack = d3.pack()
     .size([diameter - 4, diameter - 4]);
 
-var parseData = function(data) {
+var funcFlareCsv = function(data) {
     // console.log(data);
-    // var newData = {
-    //     name: "Albums By Artists",
-    //     children: []
-    // };
+    data.value = +data.value;
+    if (data.value) return data;
+};
 
-    // data.forEach(function(d, i) { 
-    //     // console.log(d, i); 
+// doesn't work
+// d3.csv("data/flare.csv", funcFlareCsv, function(error, tracksData) {
 
-    //     newData.children.push({
-    //         name: data["Album"],
-    //         children:[
-    //             {
-    //                 name: data["Name"],
-    //                 size: data["Size"]
-    //             }
-    //         ]
-    //     });
-    // });
+// works
+// d3.json("data/flare.json", function(error, tracksData) {
 
-    // MyTracks \ "Album Artist" \ "Album" \ "Name" (of track), "Size" (of track)
-    var newData = {
-        name: "MyTracks",
-        children: [
-            {
-                name: "Eric Prydz",
-                children: [
-                    {
-                        name: "Album 1", 
-                        children: [
-                            {name: "Song 2", size: 1080}
-                        ]
-                    },
-                    {
-                        name: "Album 2", 
-                        children: [
-                            {
-                                name: "Song 1", 
-                                size: 1075
-                            },
-                            {name: "Song 3", size: 1085},
-                            {name: "Song 4", size: 1090}
-                        ]
-                    }
-                ]
-            },
-            {
-                name: "Above and Beyond",
-                children: [
-                    {
-                        name: "Album A", 
-                        children: [
-                            {name: "Song A.1", "size": 1082},
-                            {name: "Song A.1", "size": 1082},
-                            {name: "Song A.1", "size": 2082},
-                            {name: "Song A.1", "size": 4082}
-                        ]
-                    },
-                    {
-                        name: "Album B", 
-                        children: [
-                            // {name: "Song B.1", "size": 1082},
-                            {name: "Song B.2", "size": 1082}
-                        ]
-                    }
-                ]
-            }
-        ]            
-    };
+// doesn't work = wrong data structure
+// d3.csv("data/tracks.csv", iTunesDataToCamelCase, function(error, tracksData) {
 
-
-    return newData || data;
-}
-
-// d3.json("data/flare.json", function(error, root) {
-d3.json("data/tracks.json", function(error, root) {
-    // root = parseData(root);
+// doesn't work = wrong data structure
+d3.json("data/tracks.json", function(error, iTunesData) {
+    var tracksData = iTunesData.map(function(d, i) {
+        return iTunesDataToCamelCase(d);
+    });
+    // tracksData = convertItunesDataToDeepChildrenData(tracksData);
+    
+    console.log(tracksData);
 
     if (error) throw error;
 
-    root = d3.hierarchy(root)
+    var root = d3.hierarchy(tracksData)
         .sum(function(d) {
             // console.log(d);
             return d.size;
