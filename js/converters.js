@@ -157,7 +157,8 @@ export function flattenedHierarchy(hierarchyData) {
         else childrenData.push({
             packageName: name,
             className: node.name,
-            value: node.size
+            value: node.size // for bubble_for_json and flare.json
+            // value: node.value // for bubble_for_json and tracks.json
         });
     }
 

@@ -34,10 +34,8 @@ d3.json("data/tracks.json", function(error, iTunesData) {
         return iTunesDataToCamelCase(d);
     });
     tracksData = convertItunesDataToFlareData(tracksData);
-    console.log(tracksData);
 
     // tracksData = flattenedHierarchy(tracksData); // no need for circle_packing.js
-    // console.log(tracksData);
 
     if (error) throw error;
 

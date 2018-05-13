@@ -14,6 +14,11 @@ export default function(error, data) {
         .size([width, width])
         .padding(1.5);
 
+    // filter only those which don't have artworkCount
+    data = data.filter((el) => {
+        return !el.artworkCount
+    });
+
     var root = d3.hierarchy({
             children: data
         })
@@ -35,8 +40,10 @@ export default function(error, data) {
 
                 d.id = id; // full path "Artist.Album.Name"
                 d.package = id.slice(0, i); // "Artist.Album" node
+                d.name = id.slice(0, i); // "Artist.Album" node
 
                 d.class = id.slice(i + 1); // track "Name" - last item/child in flare chain
+                d.className = id.slice(i + 1); // track "Name" - last item/child in flare chain
 
                 // d.class = "Track ID: " + d.data.trackId +
                 // d.class = d.data.grouping;
@@ -51,6 +58,10 @@ export default function(error, data) {
                 // d.class = d.data.bpm;
 
                 !d.data.artworkCount && console.log(d.data);
+                
+                // if (!d.data.artworkCount){
+                //     return d;
+                // };
             }
         });
 

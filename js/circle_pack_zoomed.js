@@ -23,6 +23,14 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
     var tracksData = iTunesData.map(function(d, i) {
         return iTunesDataToCamelCase(d);
     });
+
+    // filter only those which don't have artworkCount
+    tracksData = tracksData.filter((el) => {
+        return !el.artworkCount;
+    });
+
+    console.log(tracksData);
+
     tracksData = convertItunesDataToFlareData(tracksData);
     // console.log(JSON.stringify(tracksData, null, 2));
 
