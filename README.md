@@ -1,14 +1,9 @@
 # Initial Info
+My iTunes library statistics project. Designed to run script `./setup.sh`, then refresh `http-server` and look to music tracks which require some changes (missed artwork, missed artist name, missed album name, etc.)
 
-- https://support.apple.com/en-gb/HT201610
+## Tools
 
->The iTunes Library.xml file is no longer used by the latest versions of Apple media applications on OS X Yosemite and later.
-
->The iTunes Library.xml file contains some, but not all, of the same information that's stored in the iTunes Library.itl file. The purpose of the iTunes Library.xml file is to make your music and playlists available to other applications on your computer, such as iPhoto, Garageband, iMovie, and third-party software, in OS X Mountain Lion and earlier. These applications use this file to make it easier for you to add music from your iTunes library to your projects.
-
-# Tools
-
-- https://github.com/shawnbot/itunes-data `npm install itunes-data -g`
+- https://github.com/shawnbot/itunes-data
 - https://github.com/d3/d3/wiki/Gallery
 - https://en.wikipedia.org/wiki/ID3
 
@@ -18,6 +13,7 @@
 - http://vallandingham.me/bubble_cloud/#words
 - http://vallandingham.me/vis/gates/ - nice idea by years
 - http://bl.ocks.org/phuonghuynh/54a2f97950feadb45b07 - another Bubble chart using JQuery and Cafey
+- https://bl.ocks.org/danielatkin/57ea2f55b79ae686dfc7 - nice with categories.
 
 ## D3.Pack
 
@@ -38,11 +34,19 @@
 
 
 ## Other
-
+- https://gerardnico.com/viz/d3/stratify#creating_the_tree_by_calling_the_stratify_operator
 - Maybe C3, 
 - maybe Plotly.JS https://plot.ly/javascript/, https://github.com/plotly/plotly.js/, https://github.com/plotly/plotly-nodejs
 
 # HowTo
+
+
+## Find library xml file
+- https://support.apple.com/en-gb/HT201610
+
+>The iTunes Library.xml file is no longer used by the latest versions of Apple media applications on OS X Yosemite and later.
+
+>The iTunes Library.xml file contains some, but not all, of the same information that's stored in the iTunes Library.itl file. The purpose of the iTunes Library.xml file is to make your music and playlists available to other applications on your computer, such as iPhoto, Garageband, iMovie, and third-party software, in OS X Mountain Lion and earlier. These applications use this file to make it easier for you to add music from your iTunes library to your projects.
 
 ## Export iTunnes library
 
@@ -55,7 +59,7 @@
 - http://xmlgrid.net/cgi-bin/xg/xo.cgi
 - http://xmlgrid.net/
 
-## Visualize SJON 
+## Visualize JSON 
 - https://github.com/burningtree/awesome-json
 - https://github.com/tulios/json-viewer
 
