@@ -7,7 +7,7 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 - https://github.com/d3/d3/wiki/Gallery
 - https://en.wikipedia.org/wiki/ID3
 
-## D3.Buble
+## D3.Bubble
 - https://bl.ocks.org/mbostock/4063269 - Bubble chart
 - http://www.tylernwolf.com/#/portfolio/uxwords - nice Bubble example with interactive click
 - http://vallandingham.me/bubble_cloud/#words
@@ -34,6 +34,10 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 
 
 ## Other
+- Looks doable, integration with [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
+	- http://michaelthelin.se/spotify-web-api-node/#search
+	- https://github.com/thelinmichael/spotify-web-api-node
+	- and many npm packages for Spotify API wrappers.
 - https://gerardnico.com/viz/d3/stratify#creating_the_tree_by_calling_the_stratify_operator
 - Maybe C3, 
 - maybe Plotly.JS https://plot.ly/javascript/, https://github.com/plotly/plotly.js/, https://github.com/plotly/plotly-nodejs
