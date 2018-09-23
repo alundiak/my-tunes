@@ -7,14 +7,27 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "fast-csv": "^0.6.0",
-    "itunes-data": "^0.1.4",
-    "plotly": "^1.0.6"
+    "fast-csv": "^2.4.1",
+    "itunes-data": "^0.1.4"
   },
   "scripts": {
     "start": "node server.js",
-    "csv": "itunes-data --tracks data/tracks.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "tsv": "itunes-data --tracks data/tracks.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "json": "itunes-data --tracks data/tracks.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml"
+    "jsonFormat": "itunes-data --tracks --format json ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/tracks2.json",
+    "tracksJson": "itunes-data --tracks data/tracks.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "tracksCsv": "itunes-data --tracks data/tracks.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "tracksTsv": "itunes-data --tracks data/tracks.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "artistsJson": "itunes-data --artists data/artists.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "artistsCsv": "itunes-data --artists data/artists.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "artistsTsv": "itunes-data --artists data/artists.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "albumsJson": "itunes-data --albums data/albums.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "albumsCsv": "itunes-data --albums data/albums.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "albumsTsv": "itunes-data --albums data/albums.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "plJson": "itunes-data --playlists data/playlists.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "plCsv": "itunes-data --playlists data/playlists.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "plTsv": "itunes-data --playlists data/playlists.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "libJson": "itunes-data --library data/library.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "libCsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "libЕsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "libStd": "itunes-data --library ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/library.xml"
   }
 }

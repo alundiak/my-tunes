@@ -25,13 +25,22 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
     });
 
     // filter only those which don't have artworkCount
-    tracksData = tracksData.filter((el) => {
+    var noArtWorkData = tracksData.filter((el) => {
         return !el.artworkCount;
     });
 
-    console.log(tracksData);
+    if (tracksData.length > 0) {
+        console.log(tracksData); // so that I ca see info in console.
+        tracksData = convertItunesDataToFlareData(tracksData);
+    }
 
-    tracksData = convertItunesDataToFlareData(tracksData);
+    if (!noArtWorkData.length) {
+        console.log('All albums have artwork pictures.');
+    } else {
+        // TODO
+        console.log(noArtWorkData);
+    }
+
     // console.log(JSON.stringify(tracksData, null, 2));
 
     if (error) throw error;

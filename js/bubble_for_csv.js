@@ -15,9 +15,16 @@ export default function(error, data) {
         .padding(1.5);
 
     // filter only those which don't have artworkCount
-    data = data.filter((el) => {
+    var noArtWorkData = data.filter((el) => {
         return !el.artworkCount
     });
+
+    if (!noArtWorkData.length) {
+        console.log('All albums have artwork pictures.');
+    } else {
+        // TODO
+        console.log(noArtWorkData);
+    }
 
     var root = d3.hierarchy({
             children: data
@@ -58,7 +65,7 @@ export default function(error, data) {
                 // d.class = d.data.bpm;
 
                 !d.data.artworkCount && console.log(d.data);
-                
+
                 // if (!d.data.artworkCount){
                 //     return d;
                 // };
