@@ -2,8 +2,7 @@
 // https://gist.github.com/mbostock/7607535
 import {
     iTunesDataToCamelCase, convertItunesDataToFlareData
-}
-from './converters.js';
+} from './converters.js';
 
 var svg = d3.select("svg"),
     margin = 20,
@@ -19,8 +18,8 @@ var pack = d3.pack()
     .size([diameter - margin, diameter - margin])
     .padding(2);
 
-d3.json("../data/tracks.json", function(error, iTunesData) {
-    var tracksData = iTunesData.map(function(d, i) {
+d3.json("/data/tracks.json", function (error, iTunesData) {
+    var tracksData = iTunesData.map(function (d, i) {
         return iTunesDataToCamelCase(d);
     });
 
@@ -46,11 +45,11 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
     if (error) throw error;
 
     var root = d3.hierarchy(tracksData)
-        .sum(function(d) {
+        .sum(function (d) {
             // return d.size;
             return d.value;
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
             return b.value - a.value;
         });
 
@@ -61,13 +60,13 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
     var circle = g.selectAll("circle")
         .data(nodes)
         .enter().append("circle")
-        .attr("class", function(d) {
+        .attr("class", function (d) {
             return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root";
         })
-        .style("fill", function(d) {
+        .style("fill", function (d) {
             return d.children ? color(d.depth) : null;
         })
-        .on("click", function(d) {
+        .on("click", function (d) {
             if (focus !== d) zoom(d), d3.event.stopPropagation();
         });
 
@@ -75,13 +74,13 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
         .data(nodes)
         .enter().append("text")
         .attr("class", "label")
-        .style("fill-opacity", function(d) {
+        .style("fill-opacity", function (d) {
             return d.parent === root ? 1 : 0;
         })
-        .style("display", function(d) {
+        .style("display", function (d) {
             return d.parent === root ? "inline" : "none";
         })
-        .text(function(d) {
+        .text(function (d) {
             return d.data.name;
         });
 
@@ -89,7 +88,7 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
 
     svg
         .style("background", color(-1))
-        .on("click", function() {
+        .on("click", function () {
             zoom(root);
         });
 
@@ -101,24 +100,24 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
 
         var transition = d3.transition()
             .duration(d3.event.altKey ? 7500 : 750)
-            .tween("zoom", function(d) {
+            .tween("zoom", function (d) {
                 var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
-                return function(t) {
+                return function (t) {
                     zoomTo(i(t));
                 };
             });
 
         transition.selectAll("text")
-            .filter(function(d) {
+            .filter(function (d) {
                 return d.parent === focus || this.style.display === "inline";
             })
-            .style("fill-opacity", function(d) {
+            .style("fill-opacity", function (d) {
                 return d.parent === focus ? 1 : 0;
             })
-            .on("start", function(d) {
+            .on("start", function (d) {
                 if (d.parent === focus) this.style.display = "inline";
             })
-            .on("end", function(d) {
+            .on("end", function (d) {
                 if (d.parent !== focus) this.style.display = "none";
             });
     }
@@ -126,10 +125,10 @@ d3.json("../data/tracks.json", function(error, iTunesData) {
     function zoomTo(v) {
         var k = diameter / v[2];
         view = v;
-        node.attr("transform", function(d) {
+        node.attr("transform", function (d) {
             return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")";
         });
-        circle.attr("r", function(d) {
+        circle.attr("r", function (d) {
             return d.r * k;
         });
     }

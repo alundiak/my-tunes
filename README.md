@@ -39,7 +39,7 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 	- https://github.com/thelinmichael/spotify-web-api-node
 	- and many npm packages for Spotify API wrappers.
 - https://gerardnico.com/viz/d3/stratify#creating_the_tree_by_calling_the_stratify_operator
-- Maybe C3, 
+- Maybe C3,
 - maybe Plotly.JS https://plot.ly/javascript/, https://github.com/plotly/plotly.js/, https://github.com/plotly/plotly-nodejs
 
 # HowTo
@@ -63,7 +63,7 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 - http://xmlgrid.net/cgi-bin/xg/xo.cgi
 - http://xmlgrid.net/
 
-## Visualize JSON 
+## Visualize JSON
 - https://github.com/burningtree/awesome-json
 - https://github.com/tulios/json-viewer
 
@@ -71,5 +71,5 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 # Other people do
 
 - https://quantixed.wordpress.com/2014/12/01/my-favorite-things/
-
-`g-index`, `h-index` ?
+- https://www.wired.com/2016/10/lets-obsess-intricate-map-alt-music-history/ Circuit Board like v.
+- `g-index`, `h-index` ?

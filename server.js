@@ -9,7 +9,7 @@ const readStream = fs.createReadStream(path.resolve(lib));
 // console.log(stream); // works.
 
 parser.on('track', function(track) {
-    console.log("track:", track);
+    // console.log("track:", track);
 });
 
 // parser.on('artist', function(artist) {
@@ -32,7 +32,7 @@ readStream.pipe(parser); // server starts, but then on page refresh an error.
 //
 // But how to maintain streaming ?
 // By default, it should not throw an event, but it does. Bug?
-// 
+//
 
 //
 // HTTP/2 Server using NodeJS and HTTP2 API

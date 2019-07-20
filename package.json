@@ -5,10 +5,19 @@
   "author": "Andrii Lundiak <landike@gmail.com>",
   "main": "index.js",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gh-pages": "^2.0.1",
+    "node-expat": "^2.3.18"
+  },
   "dependencies": {
-    "fast-csv": "^2.4.1",
-    "itunes-data": "^0.1.4"
+    "fast-csv": "^2.5.0",
+    "itunes-data": "https://github.com/shawnbot/itunes-data.git#master"
   },
   "scripts": {
     "start": "node server.js",
@@ -28,6 +37,12 @@
     "libJson": "itunes-data --library data/library.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
     "libCsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
     "libЕsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "libStd": "itunes-data --library ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/library.xml"
+    "libStd": "itunes-data --library ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/library.xml",
+    "lint": "eslint --fix ./js/**.js",
+    "copyData": "mkdir dist/data/ && cp ./data/tracks.json ./dist/data/tracks.json",
+    "copyFiles": "cp circle_zoomed.html ./dist/index.html && cp ./circle_pack_zoomed.js dist/ && cp ./converters.js dist/",
+    "prodBuild": "rm -rf dist/** && npm run copyData && npm run copyFiles",
+    "predeploy": "npm run prodBuild",
+    "deploy": "gh-pages -d dist"
   }
 }

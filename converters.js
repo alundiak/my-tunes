@@ -23,7 +23,7 @@ export function iTunesDataToCamelCase(data) {
     newData.value = +data['Play Count'];
     // newData.value = +data['Year'];
     // newData.value = +data['Bit Rate'];
-    
+
     newData.trackId = data['Track ID'];
     newData.name = data['Name'];
     newData.artist = data['Artist'];
@@ -53,7 +53,7 @@ export function iTunesDataToCamelCase(data) {
 /**
  * [convertItunesDataToFlareData description]
  * @param  {[Array]} data raw iTunesData
- * @return {[Array]} converted, flare/hierarchy data: 
+ * @return {[Array]} converted, flare/hierarchy data:
  * "MyTracks \ "Artist" \ "Album" \ { "Name" (aka name), "Play Count" (aka value) }
  */
 export function convertItunesDataToFlareData(data) {
@@ -62,54 +62,54 @@ export function convertItunesDataToFlareData(data) {
         children: []
     };
 
-    data.forEach(function(d, i) { 
+    data.forEach(function (d, i) {
         let foundArtist = newData.children.find((artistObj) => {
             return artistObj.name === d.artist;
         });
 
-        if (foundArtist){
-        	let foundAlbum = foundArtist.children.find((albumObj) => {
-        		return albumObj.name === d.album;	
-        	});
-        	if (foundAlbum){
-        		foundAlbum.children.push({
-	                name: d.name || 'track name not found',
-	                // size: d.size,
-	                // size: d.playCount || 0,
-	                value: d.playCount || 0 // last in chain, so we need value/playCount
-	            });
-        	} else {
-        		foundArtist.children.push({
-	                name: d.album || 'album name not found',
-	                // size: d.size,
-	                // size: d.playCount || 0,
-	                // value: d.playCount || 0, // maybe just 0
-	                children: [
-                    	{
-                    		name: d.name || 'track name not found',
-                    		value: d.playCount || 0 // maybe just 0
-                    	}
+        if (foundArtist) {
+            let foundAlbum = foundArtist.children.find((albumObj) => {
+                return albumObj.name === d.album;
+            });
+            if (foundAlbum) {
+                foundAlbum.children.push({
+                    name: d.name || 'track name not found',
+                    // size: d.size,
+                    // size: d.playCount || 0,
+                    value: d.playCount || 0 // last in chain, so we need value/playCount
+                });
+            } else {
+                foundArtist.children.push({
+                    name: d.album || 'album name not found',
+                    // size: d.size,
+                    // size: d.playCount || 0,
+                    // value: d.playCount || 0, // maybe just 0
+                    children: [
+                        {
+                            name: d.name || 'track name not found',
+                            value: d.playCount || 0 // maybe just 0
+                        }
                     ]
-	            });
-        	}
+                });
+            }
         } else { // unique artist entry
-        	newData.children.push({
-	            name: d.artist || 'artist name not found',
-	            children:[
-	                {
-	                    name: d.album || 'album name not found',
-	                    children: [
-	                    	{
-	                    		name: d.name || 'track name not found',
-	                    		value: d.playCount || 0 // maybe just 0
-	                    	}
-	                    ]
-	                    // size: d.size,
-	                    // size: d.playCount || 0, // to follow flattenedHierarchy() function code. But not sure if needed.
-	                    // value: d.playCount || 0 // maybe just 0
-	                }
-	            ]
-	        });
+            newData.children.push({
+                name: d.artist || 'artist name not found',
+                children: [
+                    {
+                        name: d.album || 'album name not found',
+                        children: [
+                            {
+                                name: d.name || 'track name not found',
+                                value: d.playCount || 0 // maybe just 0
+                            }
+                        ]
+                        // size: d.size,
+                        // size: d.playCount || 0, // to follow flattenedHierarchy() function code. But not sure if needed.
+                        // value: d.playCount || 0 // maybe just 0
+                    }
+                ]
+            });
         }
     });
 
@@ -123,10 +123,10 @@ export function convertItunesDataToFlattendChildrenData(iTunesDataSimplified) {
         children: []
     };
 
-    iTunesDataSimplified.forEach(function(d, i) { 
+    iTunesDataSimplified.forEach(function (d, i) {
         newData.children.push({
             name: d.album,
-            children:[
+            children: [
                 {
                     name: d.name || 'name not found - correct track info',
                     // size: d.size,
@@ -142,24 +142,27 @@ export function convertItunesDataToFlattendChildrenData(iTunesDataSimplified) {
 
 //
 // FOR BUBBLE ONLY !!! - if new logic needed, create separate function
-// 
+//
 // Returns a flattened hierarchy containing all leaf nodes under the root.
 // Looks like TreeNode / ListNode (similar to as in leetcode - https://leetcode.com/problems/add-two-numbers/description/)
 // Code taken from https://bl.ocks.org/john-guerra/0d81ccfd24578d5d563c55e785b3b40a and reworked
 export function flattenedHierarchy(hierarchyData) {
-    console.log('Initial data structure', hierarchyData);
+    // console.log('Initial data structure', hierarchyData);
     var childrenData = [];
 
     function recurse(name, node) {
-        if (node.children) node.children.forEach(function(child) {
-            recurse(node.name, child);
-        });
-        else childrenData.push({
-            packageName: name,
-            className: node.name,
-            value: node.size // for bubble_for_json and flare.json
-            // value: node.value // for bubble_for_json and tracks.json
-        });
+        if (node.children) {
+            node.children.forEach(function (child) {
+                recurse(node.name, child);
+            });
+        } else {
+            childrenData.push({
+                packageName: name,
+                className: node.name,
+                value: node.size // for bubble_for_json and flare.json
+                // value: node.value // for bubble_for_json and tracks.json
+            });
+        }
     }
 
     recurse(null, hierarchyData);
@@ -167,7 +170,7 @@ export function flattenedHierarchy(hierarchyData) {
     let convertedData = {
         children: childrenData
     };
-    console.log('Converted data structure', convertedData);
+    // console.log('Converted data structure', convertedData);
 
     return convertedData;
 }
