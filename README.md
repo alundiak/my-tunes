@@ -1,6 +1,8 @@
 # Initial Info
 My iTunes library statistics project. Designed to run script `./setup.sh`, then refresh `http-server` and look to music tracks which require some changes (missed artwork, missed artist name, missed album name, etc.)
 
+![logo](/img.png)
+
 ## Tools
 
 - https://github.com/shawnbot/itunes-data
