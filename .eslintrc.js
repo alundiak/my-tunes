@@ -6,6 +6,7 @@ module.exports = {
     },
     "extends": "standard",
     "globals": {
+        "d3": "readonly",
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },

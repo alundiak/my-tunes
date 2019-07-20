@@ -1,6 +1,11 @@
 import bubbleForCsv from './js/bubble_for_csv.js';
 import bubbleForJson from './js/bubble_for_json.js';
-import {iTunesDataToCamelCase, convertItunesDataToFlareData, convertItunesDataToFlattendChildrenData, flattenedHierarchy} from './js/converters.js';
+import {
+    iTunesDataToCamelCase,
+    convertItunesDataToFlareData,
+    convertItunesDataToFlattendChildrenData,
+    flattenedHierarchy
+} from './js/converters.js';
 
 var funcFlareCsv = function(data) {
     // console.log(data);
@@ -37,7 +42,7 @@ d3.csv("data/tracks.csv", iTunesDataToCamelCase, function(error, tracksData) {
 //     // 2 - convert camelCaseCustomData to regularHierarchyData (as flare.json)
 //     // var regularHierarchyData = convertItunesDataToFlattendChildrenData(camelCaseCustomData); // it's already flatten structure
 //     var regularHierarchyData = convertItunesDataToFlareData(camelCaseCustomData);
-     
+
 //     // 3 - convert regularHierarchyData to flattendHierarchyData
 //     var flattendHierarchyData = flattenedHierarchy(regularHierarchyData); // build packageName, className, value structure.
 

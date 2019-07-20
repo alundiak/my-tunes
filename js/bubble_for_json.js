@@ -2,7 +2,6 @@
 // This code based on forked version of D# Bubble example
 // but now using d3.json https://bl.ocks.org/john-guerra/0d81ccfd24578d5d563c55e785b3b40a
 //
-/* globals d3 */
 export default function (error, data) {
   if (error) throw error
 

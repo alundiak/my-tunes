@@ -40,9 +40,9 @@
     "libStd": "itunes-data --library ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/library.xml",
     "lint": "eslint --fix ./js/**.js",
     "copyData": "mkdir dist/data/ && cp ./data/tracks.json ./dist/data/tracks.json",
-    "copyFiles": "cp circle_zoomed.html ./dist/index.html && cp ./circle_pack_zoomed.js dist/ && cp ./converters.js dist/",
+    "copyFiles": "cp circle_pack_zoomed.html ./dist/index.html && cp ./circle_pack_zoomed.js dist/ && mkdir ./dist/js/ && cp ./js/converters.js dist/js/",
     "prodBuild": "rm -rf dist/** && npm run copyData && npm run copyFiles",
-    "predeploy": "npm run prodBuild",
+    "predeploy": "npm run tracksJson && npm run prodBuild",
     "deploy": "gh-pages -d dist"
   }
 }

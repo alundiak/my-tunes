@@ -1,6 +1,5 @@
 // This code is based on D3 Bubble example using csv:
 // https://bl.ocks.org/mbostock/4063269
-/* globals d3 */
 export default function (error, data) {
   if (error) throw error
 
