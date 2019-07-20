@@ -18,7 +18,7 @@ var pack = d3.pack()
     .size([diameter - margin, diameter - margin])
     .padding(2);
 
-d3.json("/data/tracks.json", function (error, iTunesData) {
+d3.json("./data/tracks.json", function (error, iTunesData) {
     var tracksData = iTunesData.map(function (d, i) {
         return iTunesDataToCamelCase(d);
     });
