@@ -36,7 +36,7 @@
     "plTsv": "itunes-data --playlists data/playlists.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
     "libJson": "itunes-data --library data/library.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
     "libCsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "libЕsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
+    "libTsv": "itunes-data --library data/library.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
     "libStd": "itunes-data --library ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/library.xml",
     "lint": "eslint --fix ./js/**.js",
     "predeploy": "npm run tracksJson && ./copyFiles.sh",
