@@ -70,6 +70,10 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 - https://github.com/tulios/json-viewer
 
 
+## Redo with ReactJS
+- http://uber.github.io/react-vis/examples/showcases/treemaps
+
+
 # Other people do
 
 - https://quantixed.wordpress.com/2014/12/01/my-favorite-things/
