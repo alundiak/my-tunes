@@ -29,7 +29,7 @@ d3.json("./data/tracks.json", function (error, iTunesData) {
     });
 
     if (tracksData.length > 0) {
-        console.log(tracksData); // so that I ca see info in console.
+        // console.log(tracksData); // so that I can see info in console.
         tracksData = convertItunesDataToFlareData(tracksData);
     }
 
@@ -37,7 +37,7 @@ d3.json("./data/tracks.json", function (error, iTunesData) {
         console.log('All albums have artwork pictures.');
     } else {
         // TODO
-        console.log(noArtWorkData);
+        // console.log(noArtWorkData);
     }
 
     // console.log(JSON.stringify(tracksData, null, 2));
