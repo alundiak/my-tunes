@@ -37,7 +37,7 @@ d3.json("./data/tracks.json", function (error, iTunesData) {
         console.log('All albums have artwork pictures.');
     } else {
         // TODO
-        // console.log(noArtWorkData);
+        console.log(noArtWorkData);
     }
 
     // console.log(JSON.stringify(tracksData, null, 2));
