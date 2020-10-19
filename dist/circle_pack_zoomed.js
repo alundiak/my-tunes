@@ -29,7 +29,7 @@ d3.json("./data/tracks.json", function (error, iTunesData) {
     });
 
     if (tracksData.length > 0) {
-        console.log(tracksData); // so that I ca see info in console.
+        // console.log(tracksData); // so that I can see info in console.
         tracksData = convertItunesDataToFlareData(tracksData);
     }
 
