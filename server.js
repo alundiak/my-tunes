@@ -8,7 +8,7 @@ const parser = itunes.parser();
 const readStream = fs.createReadStream(path.resolve(lib));
 // console.log(stream); // works.
 
-parser.on('track', function(track) {
+parser.on('track', function (track) {
     // console.log("track:", track);
 });
 
@@ -62,4 +62,6 @@ server.on('stream', (httpStream, headers) => {
     httpStream.end('<h1>Hello World</h1>');
 });
 
-server.listen(8443);
+server.listen(8443, () => {
+    console.log('EXPERIMENTAL. https://localhost:8443/ running on port 8443. Run `http-server` instead to get localhost:8080')
+});
