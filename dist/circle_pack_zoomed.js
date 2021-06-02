@@ -36,8 +36,8 @@ d3.json("./data/tracks.json", function (error, iTunesData) {
     if (!noArtWorkData.length) {
         console.log('All albums have artwork pictures.');
     } else {
-        // TODO
-        console.log(noArtWorkData);
+        console.log(`These tracks seems to be with 'artworkCount: undefined' -
+        you added artwork to all tracks as selected multiple, so it may have added to first in album only.`, noArtWorkData);
     }
 
     // console.log(JSON.stringify(tracksData, null, 2));
