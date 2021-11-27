@@ -12,6 +12,8 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "d3": "^4.13.0",
+    "d3-cloud": "^1.2.5",
     "fast-csv": "^4.3.6",
     "itunes-data": "git+https://github.com/shawnbot/itunes-data.git#master"
   },
