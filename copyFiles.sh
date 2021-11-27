@@ -1,5 +1,6 @@
 #!/bin/bash
 rm -rf ./dist/**
+mkdir ./dist/
 mkdir ./dist/js/
 mkdir ./dist/css/
 mkdir ./dist/data/

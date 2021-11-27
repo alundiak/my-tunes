@@ -1,5 +1,7 @@
 data
 data_from_MacBook
+dist
+dist_from_MacBook  
 node_modules
 bower_components
 *.log
