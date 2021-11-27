@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # FILE=~/Music/iTunes/iTunes\ Media\ Library.xml # Yosemite, el Capitan (not sure)
-FILE=~/Music/iTunes/iTunes\ Music\ Library.xml # Sierra (at least for me)
+# FILE=~/Music/iTunes/iTunes\ Music\ Library.xml # Sierra (at least for me) on MacBook Pro
+FILE=~/Music/Music/Media.localized/Library.xml # Monterey on iMac
 # FILE="./Library.xml"
 
 # Issue with tsv/csv

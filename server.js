@@ -1,4 +1,7 @@
-const lib = '/Users/alund/Music/iTunes/iTunes Music Library.xml'; // Yes just use " " - space, no "/".
+// MacBook Pro
+// const lib = '/Users/alund/Music/iTunes/iTunes Music Library.xml'; // Yes just use " " - space, no "/".
+// iMac
+const lib = '/Users/lund/Music/Music/Media.localized/Library.xml';
 
 const fs = require('fs');
 const http2 = require('http2');

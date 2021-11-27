@@ -54,7 +54,7 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 
 >The iTunes Library.xml file contains some, but not all, of the same information that's stored in the iTunes Library.itl file. The purpose of the iTunes Library.xml file is to make your music and playlists available to other applications on your computer, such as iPhoto, Garageband, iMovie, and third-party software, in OS X Mountain Lion and earlier. These applications use this file to make it easier for you to add music from your iTunes library to your projects.
 
-## Export iTunnes library
+## Export iTunes library
 
 - http://apple.stackexchange.com/questions/46312/export-itunes-music-library-information-album-artist-track-names-to-csv-or-s
 
