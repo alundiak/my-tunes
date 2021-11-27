@@ -1,16 +1,16 @@
-import bubbleForCsv from './js/bubble_for_csv.js';
-import bubbleForJson from './js/bubble_for_json.js';
+import bubbleForCsv from './bubble_for_csv.js';
+import bubbleForJson from './bubble_for_json.js';
 import {
-    iTunesDataToCamelCase,
-    convertItunesDataToFlareData,
-    convertItunesDataToFlattendChildrenData,
-    flattenedHierarchy
-} from './js/converters.js';
+  iTunesDataToCamelCase,
+  convertItunesDataToFlareData,
+  convertItunesDataToFlattendChildrenData,
+  flattenedHierarchy
+} from './converters.js';
 
-var funcFlareCsv = function(data) {
-    // console.log(data);
-    data.value = +data.value;
-    if (data.value) return data;
+const funcFlareCsv = function (data) {
+  // console.log(data);
+  data.value = +data.value;
+  if (data.value) return data;
 };
 
 // works
@@ -24,8 +24,8 @@ var funcFlareCsv = function(data) {
 // });
 
 // works - huge bubble with small circles.
-d3.csv("data/tracks.csv", iTunesDataToCamelCase, function(error, tracksData) {
-    bubbleForCsv(error, tracksData);
+d3.csv('data/tracks.csv', iTunesDataToCamelCase, function (error, tracksData) {
+  bubbleForCsv(error, tracksData);
 });
 
 // works - huge bubble with small circles.

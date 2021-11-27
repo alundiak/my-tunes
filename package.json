@@ -2,9 +2,19 @@
   "name": "@lundiak/my_tunes",
   "description": "My iTunes library statistics project",
   "version": "1.0.0",
-  "author": "Andrii Lundiak <landike@gmail.com>",
+  "author": "Andrii Lundiak",
   "main": "index.js",
   "license": "ISC",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint --fix ./js/**.js server.js",
+    "predeploy": "./setup.sh && ./copyFiles.sh",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "fast-csv": "^4.3.6",
+    "itunes-data": "git+https://github.com/shawnbot/itunes-data.git#master"
+  },
   "devDependencies": {
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
@@ -12,32 +22,5 @@
     "eslint-plugin-promise": "^5.1.1",
     "gh-pages": "^3.2.3",
     "node-expat": "^2.4.0"
-  },
-  "dependencies": {
-    "fast-csv": "^4.3.6",
-    "itunes-data": "git+https://github.com/shawnbot/itunes-data.git#master"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "jsonFormat": "itunes-data --tracks --format json ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/tracks2.json",
-    "tracksJson": "itunes-data --tracks data/tracks.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "tracksCsv": "itunes-data --tracks data/tracks.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "tracksTsv": "itunes-data --tracks data/tracks.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "artistsJson": "itunes-data --artists data/artists.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "artistsCsv": "itunes-data --artists data/artists.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "artistsTsv": "itunes-data --artists data/artists.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "albumsJson": "itunes-data --albums data/albums.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "albumsCsv": "itunes-data --albums data/albums.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "albumsTsv": "itunes-data --albums data/albums.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "plJson": "itunes-data --playlists data/playlists.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "plCsv": "itunes-data --playlists data/playlists.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "plTsv": "itunes-data --playlists data/playlists.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "libJson": "itunes-data --library data/library.json ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "libCsv": "itunes-data --library data/library.csv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "libTsv": "itunes-data --library data/library.tsv ~/Music/iTunes/iTunes\\ Music\\ Library.xml",
-    "libStd": "itunes-data --library ~/Music/iTunes/iTunes\\ Music\\ Library.xml > data/library.xml",
-    "lint": "eslint --fix ./js/**.js",
-    "predeploy": "npm run tracksJson && ./copyFiles.sh",
-    "deploy": "gh-pages -d dist"
   }
 }

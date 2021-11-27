@@ -12,7 +12,7 @@ const readStream = fs.createReadStream(path.resolve(lib));
 // console.log(stream); // works.
 
 parser.on('track', function (track) {
-    // console.log("track:", track);
+  // console.log("track:", track);
 });
 
 // parser.on('artist', function(artist) {
@@ -44,27 +44,27 @@ readStream.pipe(parser); // server starts, but then on page refresh an error.
 
 // const server = http2.createServer(); // doesn't work
 const server = http2.createSecureServer({
-    key: fs.readFileSync('localhost-privkey.pem'),
-    cert: fs.readFileSync('localhost-cert.pem')
+  key: fs.readFileSync('localhost-privkey.pem'),
+  cert: fs.readFileSync('localhost-cert.pem')
 });
 
 server.on('error', (err) => console.error(err));
 
 server.on('stream', (httpStream, headers) => {
-    // httpStream is a Duplex
+  // httpStream is a Duplex
 
-    // TODO code here
+  // TODO code here
 
-    // console.log('READ STREAM', readStream);
-    // console.log('HTTP STREAM', httpStream);
+  // console.log('READ STREAM', readStream);
+  // console.log('HTTP STREAM', httpStream);
 
-    httpStream.respond({
-        'content-type': 'text/html',
-        ':status': 200
-    });
-    httpStream.end('<h1>Hello World</h1>');
+  httpStream.respond({
+    'content-type': 'text/html',
+    ':status': 200
+  });
+  httpStream.end('<h1>Hello World</h1>');
 });
 
 server.listen(8443, () => {
-    console.log('EXPERIMENTAL. https://localhost:8443/ running on port 8443. Run `http-server` instead to get localhost:8080')
+  console.log('EXPERIMENTAL. https://localhost:8443/ running on port 8443. Run `http-server` instead to get localhost:8080');
 });
