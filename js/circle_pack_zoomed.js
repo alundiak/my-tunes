@@ -92,7 +92,7 @@ d3.json('./data/tracks.json', function (error, iTunesData) {
 
   zoomTo([root.x, root.y, root.r * 2 + margin]);
 
-  function zoom(d) {
+  function zoom (d) {
     const focus0 = focus;
     focus = d;
 
@@ -120,7 +120,7 @@ d3.json('./data/tracks.json', function (error, iTunesData) {
       });
   }
 
-  function zoomTo(v) {
+  function zoomTo (v) {
     const k = diameter / v[2];
     view = v;
     node.attr('transform', function (d) {

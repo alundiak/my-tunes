@@ -96,7 +96,7 @@ d3.csv('data_from_MacBook/flare.csv', function (error, data) { // maybe needed o
     });
 });
 
-function hovered(hover) {
+function hovered (hover) {
   return function (d) {
     d3.selectAll(d.ancestors().map(function (d) {
       return d.node;
