@@ -9,6 +9,10 @@ My iTunes library statistics project. Designed to run script `./setup.sh`, then 
 - https://github.com/d3/d3/wiki/Gallery
 - https://en.wikipedia.org/wiki/ID3
 
+Alternatives:
+- https://github.com/scholnicks/itunes-library
+
+
 ## D3.Bubble
 - https://bl.ocks.org/mbostock/4063269 - Bubble chart
 - http://www.tylernwolf.com/#/portfolio/uxwords - nice Bubble example with interactive click

@@ -5,6 +5,7 @@
   "author": "Andrii Lundiak",
   "main": "index.js",
   "license": "ISC",
+  "homepage": "https://alundiak.github.io/my-tunes/",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint --fix ./js/**.js server.js",
