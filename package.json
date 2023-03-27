@@ -23,7 +23,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^5.0.0",
     "node-expat": "^2.4.0"
   }
 }
