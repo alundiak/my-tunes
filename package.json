@@ -3,27 +3,25 @@
   "description": "My iTunes library statistics project",
   "version": "1.0.0",
   "author": "Andrii Lundiak",
-  "main": "index.js",
+  "main": "2025/convert-xml-to-json.js",
+  "type": "module",
   "license": "ISC",
   "homepage": "https://alundiak.github.io/my-tunes/",
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint --fix ./js/**.js server.js",
-    "predeploy": "./setup.sh && ./copyFiles.sh",
-    "deploy": "gh-pages -d dist"
+    "convert": "node 2025/convert-xml-to-json.js",
+    "start": "http-server ./",
+    "prod": "http-server ./2025/dist",
+    "lint": "eslint --fix ./js/**.js",
+    "predeploy": "./2025/copyFiles.sh",
+    "deploy": "gh-pages -d 2025/dist"
   },
   "dependencies": {
     "d3": "^4.13.0",
     "d3-cloud": "^1.2.5",
-    "fast-csv": "^4.3.6",
-    "itunes-data": "git+https://github.com/shawnbot/itunes-data.git#master"
+    "plist": "^3.1.0"
   },
   "devDependencies": {
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1",
-    "gh-pages": "^5.0.0",
-    "node-expat": "^2.4.0"
+    "gh-pages": "^6.3.0",
+    "http-server": "^14.1.1"
   }
 }

@@ -1,6 +1,7 @@
 data
 data_from_MacBook
 dist
+dist_2023
 node_modules
 bower_components
 *.log

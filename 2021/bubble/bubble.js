@@ -1,11 +1,11 @@
-import bubbleForCsv from './bubble_for_csv.js';
-import bubbleForJson from './bubble_for_json.js';
+import bubbleForCsv from "./bubble_for_csv.js";
+import bubbleForJson from "./bubble_for_json.js";
 import {
   iTunesDataToCamelCase,
   convertItunesDataToFlareData,
   convertItunesDataToFlattendChildrenData,
-  flattenedHierarchy
-} from './converters.js';
+  flattenedHierarchy,
+} from "./common.js";
 
 const funcFlareCsv = function (data) {
   // console.log(data);
@@ -24,7 +24,7 @@ const funcFlareCsv = function (data) {
 // });
 
 // works - huge bubble with small circles.
-d3.csv('data/tracks.csv', iTunesDataToCamelCase, function (error, tracksData) {
+d3.csv("data/tracks.csv", iTunesDataToCamelCase, function (error, tracksData) {
   bubbleForCsv(error, tracksData);
 });
 

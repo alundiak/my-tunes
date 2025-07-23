@@ -9,15 +9,15 @@ FILE=~/Music/Music/Media.localized/Library.xml # Monterey on iMac
 # https://github.com/shawnbot/itunes-data/issues/15
 
 # https://github.com/shawnbot/itunes-data/issues/13
-./node_modules/.bin/itunes-data --tracks data/tracks.csv "$FILE" # doens't work with fast-csv@0.4.0
-./node_modules/.bin/itunes-data --tracks data/tracks.tsv "$FILE" # doens't work with fast-csv@0.4.0
+./node_modules/.bin/itunes-data --tracks data/tracks.csv "$FILE" # doesn't work with fast-csv@0.4.0
+./node_modules/.bin/itunes-data --tracks data/tracks.tsv "$FILE" # doesn't work with fast-csv@0.4.0
 ./node_modules/.bin/itunes-data --tracks data/tracks.json "$FILE"
 
-# ./node_modules/.bin/itunes-data --artists data/artists.csv "$FILE" # doens't work with fast-csv@0.4.0
-# ./node_modules/.bin/itunes-data --artists data/artists.tsv "$FILE" # doens't work with fast-csv@0.4.0
+# ./node_modules/.bin/itunes-data --artists data/artists.csv "$FILE" # doesn't work with fast-csv@0.4.0
+# ./node_modules/.bin/itunes-data --artists data/artists.tsv "$FILE" # doesn't work with fast-csv@0.4.0
 # ./node_modules/.bin/itunes-data --artists data/artists.json "$FILE"
 
-# ./node_modules/.bin/itunes-data --albums data/albums.csv "$FILE" doens't work EVEN with fast-csv@0.6.0
+# ./node_modules/.bin/itunes-data --albums data/albums.csv "$FILE" doesn't work EVEN with fast-csv@0.6.0
 # ./node_modules/.bin/itunes-data --albums data/albums.tsv "$FILE"
 # ./node_modules/.bin/itunes-data --albums data/albums.json "$FILE"
 

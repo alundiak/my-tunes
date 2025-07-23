@@ -1,0 +1,27 @@
+{
+  "name": "@lundiak/outdated-itunes-data-parser",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint --fix server.js",
+    "predeploy": "./setup.sh && ./copyFiles.sh",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "itunes-data": "0.1.4",
+    "fast-csv": "^4.3.6"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "gh-pages": "^6.3.0",
+    "node-expat": "^2.4.0"
+  }
+}
