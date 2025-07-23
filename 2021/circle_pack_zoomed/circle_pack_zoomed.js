@@ -3,7 +3,7 @@
 import {
   iTunesDataToCamelCase,
   convertItunesDataToFlareData,
-} from "../../common.js";
+} from "../../2025/common.js";
 
 const DATA_FILE = "./data/tracks-2023.json";
 

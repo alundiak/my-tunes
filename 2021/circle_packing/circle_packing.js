@@ -6,7 +6,7 @@ import {
   iTunesDataToCamelCase,
   convertItunesDataToFlareData,
   flattenedHierarchy,
-} from "./common.js";
+} from "../../2025/common.js";
 
 const svg = d3.select("svg");
 const diameter = +svg.attr("width");
